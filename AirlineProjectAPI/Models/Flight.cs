@@ -26,6 +26,8 @@ namespace AirlineProjectAPI.Models
         [Required]
         public int Price { get; set; }
         [Required]
+        public bool Status { get; set; }
+        [Required]
         [StringLength(100)]
         public string PickTime { get; set; }
         [Required]

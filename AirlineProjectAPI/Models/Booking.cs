@@ -14,11 +14,19 @@ namespace AirlineProjectAPI.Models
         [Required]
         [StringLength(100)]
         public string CustomerName { get; set; }
+        [Required]
+        public string? EmailId { get; set; }
+        [ForeignKey("EmailId")]
+        public virtual Register? Register  { get; set; }
 
         [Required]
         public int BookedSeats { get; set; }
         [Required]
         public int TotalPrice { get; set; }
+
+        public int Discount { get; set; }
+
+        public int DiscountedPrice { get; set; }
 
     }
 }

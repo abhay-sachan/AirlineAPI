@@ -13,19 +13,19 @@ namespace AirlineProjectAPI.Models
 
         public DbSet<Booking> Booking { get; set; }
 
-        // public AirlineProjectAPIDbContext() : base() { }
+        public AirlineProjectAPIDbContext() : base() { }
 
-        //        public AirlineProjectAPIDbContext(DbContextOptions<AirlineProjectAPIDbContext> options) : base(options) { }
+        public AirlineProjectAPIDbContext(DbContextOptions<AirlineProjectAPIDbContext> options) : base(options) { }
 
 
-        protected override void OnConfiguring(DbContextOptionsBuilder builder)
-        {
-            if (!builder.IsConfigured)
-            {
-                builder.UseSqlServer("Data Source=(localdb)\\MSSQLLocalDB;Initial Catalog=Airline_DB;Integrated Security=True;");
+        //protected override void OnConfiguring(DbContextOptionsBuilder builder)
+        //{
+        //    if (!builder.IsConfigured)
+        //    {
+        //        builder.UseSqlServer("Data Source=(localdb)\\MSSQLLocalDB;Initial Catalog=Airline_DB;Integrated Security=True;");
 
-            }
-        }
+        //    }
+        //}
 
     }
 }

@@ -38,6 +38,16 @@ namespace AirlineProjectAPI.Migrations
                         .HasMaxLength(100)
                         .HasColumnType("nvarchar(100)");
 
+                    b.Property<int>("Discount")
+                        .HasColumnType("int");
+
+                    b.Property<int>("DiscountedPrice")
+                        .HasColumnType("int");
+
+                    b.Property<string>("EmailId")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(100)");
+
                     b.Property<int?>("FlightId")
                         .IsRequired()
                         .HasColumnType("int");
@@ -46,6 +56,8 @@ namespace AirlineProjectAPI.Migrations
                         .HasColumnType("int");
 
                     b.HasKey("BookingId");
+
+                    b.HasIndex("EmailId");
 
                     b.HasIndex("FlightId");
 
@@ -85,6 +97,9 @@ namespace AirlineProjectAPI.Migrations
 
                     b.Property<int>("Price")
                         .HasColumnType("int");
+
+                    b.Property<bool>("Status")
+                        .HasColumnType("bit");
 
                     b.Property<string>("ToCity")
                         .IsRequired()
@@ -131,6 +146,12 @@ namespace AirlineProjectAPI.Migrations
 
             modelBuilder.Entity("AirlineProjectAPI.Models.Booking", b =>
                 {
+                    b.HasOne("AirlineProjectAPI.Models.Register", "Register")
+                        .WithMany()
+                        .HasForeignKey("EmailId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
                     b.HasOne("AirlineProjectAPI.Models.Flight", "Flight")
                         .WithMany()
                         .HasForeignKey("FlightId")
@@ -138,6 +159,8 @@ namespace AirlineProjectAPI.Migrations
                         .IsRequired();
 
                     b.Navigation("Flight");
+
+                    b.Navigation("Register");
                 });
 
             modelBuilder.Entity("AirlineProjectAPI.Models.Flight", b =>

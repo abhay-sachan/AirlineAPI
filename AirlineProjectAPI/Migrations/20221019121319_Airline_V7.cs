@@ -4,7 +4,7 @@
 
 namespace AirlineProjectAPI.Migrations
 {
-    public partial class Airline_V1 : Migration
+    public partial class Airline_V7 : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -43,6 +43,7 @@ namespace AirlineProjectAPI.Migrations
                     ToCity = table.Column<string>(type: "nvarchar(100)", maxLength: 100, nullable: false),
                     AvailableSeats = table.Column<int>(type: "int", nullable: false),
                     Price = table.Column<int>(type: "int", nullable: false),
+                    Status = table.Column<bool>(type: "bit", nullable: false),
                     PickTime = table.Column<string>(type: "nvarchar(100)", maxLength: 100, nullable: false),
                     DropTime = table.Column<string>(type: "nvarchar(100)", maxLength: 100, nullable: false)
                 },
@@ -65,8 +66,11 @@ namespace AirlineProjectAPI.Migrations
                         .Annotation("SqlServer:Identity", "1, 1"),
                     FlightId = table.Column<int>(type: "int", nullable: false),
                     CustomerName = table.Column<string>(type: "nvarchar(100)", maxLength: 100, nullable: false),
+                    EmailId = table.Column<string>(type: "nvarchar(100)", nullable: false),
                     BookedSeats = table.Column<int>(type: "int", nullable: false),
-                    TotalPrice = table.Column<int>(type: "int", nullable: false)
+                    TotalPrice = table.Column<int>(type: "int", nullable: false),
+                    Discount = table.Column<int>(type: "int", nullable: false),
+                    DiscountedPrice = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -77,7 +81,18 @@ namespace AirlineProjectAPI.Migrations
                         principalTable: "Flight",
                         principalColumn: "FlightId",
                         onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
+                        name: "FK_Booking_Register_EmailId",
+                        column: x => x.EmailId,
+                        principalTable: "Register",
+                        principalColumn: "EmailId",
+                        onDelete: ReferentialAction.Cascade);
                 });
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Booking_EmailId",
+                table: "Booking",
+                column: "EmailId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Booking_FlightId",
@@ -96,10 +111,10 @@ namespace AirlineProjectAPI.Migrations
                 name: "Booking");
 
             migrationBuilder.DropTable(
-                name: "Register");
+                name: "Flight");
 
             migrationBuilder.DropTable(
-                name: "Flight");
+                name: "Register");
 
             migrationBuilder.DropTable(
                 name: "Routes");

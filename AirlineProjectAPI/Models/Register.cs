@@ -12,8 +12,11 @@ namespace AirlineProjectAPI.Models
         [Required]
         [StringLength(100)]
         public string Password { get; set; }
-
+        [Required]
         public string UserType { get; set; }
+
+        [NotMapped]
+        public virtual ICollection<Booking> Booking { get; set; }
 
 
     }
