@@ -18,26 +18,26 @@ namespace AirlineProjectAPI.Controllers
             this.ao = ao;
         }
         [HttpGet]
-        [Route("/api/Admin/ShowAllBookings")]
+        [Route("/api/ApplicationOwner/ShowAllBookings")]
         public List<Booking> ShowAllBookings()
         {
             return ao.ShowAllBookings();
         }
         [HttpGet]
-        [Route("/api/Admin/ShowAllRoutes")]
+        [Route("/api/ApplicationOwner/ShowAllRoutes")]
         public List<Routes> ShowAllRoutes()
         {
             return ao.ShowAllRoutes();
         }
         [HttpPost]
-        [Route("/api/Admin/AddRoute")]
+        [Route("/api/ApplicationOwner/AddRoute")]
         public bool AddRoute(Routes ro)
         {
             return ao.AddRoute(ro);
         }
 
         [HttpDelete]
-        [Route("/api/Admin/DeleteRoute/{city}")]
+        [Route("/api/ApplicationOwner/DeleteRoute/{city}")]
         public bool DeleteRoute(string city)
         {
             return ao.DeleteRoute(city);

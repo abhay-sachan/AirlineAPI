@@ -45,6 +45,15 @@ namespace AirlineProjectAPI.Controllers
         {
             return cus.ShowLatestBooking();
         }
+
+        [HttpGet]
+        [Route("/api/Customer/ShowFlightsByFromAndTo/{from}/{to}")]
+
+        public List<Flight> ShowFlightsByFromAndTo(string from, string to)
+        {
+            return cus.ShowFlightsByFromAndTo(from, to);
+        }
+
     }
 
 

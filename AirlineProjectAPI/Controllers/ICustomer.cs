@@ -12,5 +12,6 @@ namespace AirlineProjectAPI.Controllers
 
         Booking ShowLatestBooking();
 
+        List<Flight> ShowFlightsByFromAndTo(string from, string to);
     }
 }

@@ -66,6 +66,18 @@ namespace AirlineProjectAPI.Controllers
                 return data;
         }
 
+        public List<Flight> ShowFlightsByFromAndTo(string from, string to)
+        {
+            var data = db.Flight.Where(c => c.FromCity == from && c.ToCity == to && c.Status == true).ToList();
+            if (data.Count == 0)
+            {
+                List<Flight> list = new List<Flight>();
+                return list;
+            }
+            else
+                return data;
+        }
+
         public List<Flight> ShowFlightsByStatus()
         {
             var data = db.Flight.Where(c => c.Status == true).ToList();
