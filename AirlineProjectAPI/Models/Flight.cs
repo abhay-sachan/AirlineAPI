@@ -8,6 +8,11 @@ namespace AirlineProjectAPI.Models
     {
         [Key]
         public int FlightId { get; set; }
+
+        [Required]
+        [StringLength(100)]
+        public string EmailId { get; set; }
+
         [Required]
         [StringLength(100)]
         public string CompanyName { get; set; }

@@ -40,5 +40,14 @@ namespace AirlineProjectAPI.Controllers
         {
             return adm.GetAllFlightList();
         }
+
+        [HttpGet]
+        [Route("/api/Admin/GetAllFlightsOfAdmin/{email}")]
+        public List<Flight> GetAllFlightsOfAdmin(string email)
+        {
+            return adm.GetAllFlightsOfAdmin(email);
+        }
+
+
     }
 }

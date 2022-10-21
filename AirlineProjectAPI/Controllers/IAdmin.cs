@@ -9,5 +9,8 @@ namespace AirlineProjectAPI.Controllers
         bool DisableFlight(int fid);
 
         List<Flight> GetAllFlightList();
+
+        List<Flight> GetAllFlightsOfAdmin(string email);
+
     }
 }

@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace AirlineProjectAPI.Migrations
 {
     [DbContext(typeof(AirlineProjectAPIDbContext))]
-    [Migration("20221019121319_Airline_V7")]
-    partial class Airline_V7
+    [Migration("20221021063955_Airline_V9")]
+    partial class Airline_V9
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -83,6 +83,11 @@ namespace AirlineProjectAPI.Migrations
                         .HasColumnType("nvarchar(100)");
 
                     b.Property<string>("DropTime")
+                        .IsRequired()
+                        .HasMaxLength(100)
+                        .HasColumnType("nvarchar(100)");
+
+                    b.Property<string>("EmailId")
                         .IsRequired()
                         .HasMaxLength(100)
                         .HasColumnType("nvarchar(100)");

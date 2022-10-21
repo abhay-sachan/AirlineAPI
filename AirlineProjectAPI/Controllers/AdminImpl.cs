@@ -56,5 +56,11 @@ namespace AirlineProjectAPI.Controllers
         {
             return db.Flight.ToList();
         }
+
+        public List<Flight> GetAllFlightsOfAdmin(string email)
+        {
+              var data = db.Flight.Where(x => x.EmailId == email).ToList();
+              return data;       
+        }
     }
 }

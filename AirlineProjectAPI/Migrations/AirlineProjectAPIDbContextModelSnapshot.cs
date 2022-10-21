@@ -85,6 +85,11 @@ namespace AirlineProjectAPI.Migrations
                         .HasMaxLength(100)
                         .HasColumnType("nvarchar(100)");
 
+                    b.Property<string>("EmailId")
+                        .IsRequired()
+                        .HasMaxLength(100)
+                        .HasColumnType("nvarchar(100)");
+
                     b.Property<string>("FromCity")
                         .IsRequired()
                         .HasMaxLength(100)

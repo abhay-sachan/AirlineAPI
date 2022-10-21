@@ -4,7 +4,7 @@
 
 namespace AirlineProjectAPI.Migrations
 {
-    public partial class Airline_V7 : Migration
+    public partial class Airline_V9 : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -38,6 +38,7 @@ namespace AirlineProjectAPI.Migrations
                 {
                     FlightId = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
+                    EmailId = table.Column<string>(type: "nvarchar(100)", maxLength: 100, nullable: false),
                     CompanyName = table.Column<string>(type: "nvarchar(100)", maxLength: 100, nullable: false),
                     FromCity = table.Column<string>(type: "nvarchar(100)", maxLength: 100, nullable: false),
                     ToCity = table.Column<string>(type: "nvarchar(100)", maxLength: 100, nullable: false),
