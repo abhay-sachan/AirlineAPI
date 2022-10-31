@@ -43,7 +43,8 @@ namespace AirlineProjectAPI.Controllers
                 var olddata = db.Register.Where(x => x.EmailId == email && x.Password == password).FirstOrDefault();
                 if (olddata == null)
                 {
-                    throw new Exception("Invalid Email or Password");
+                    string abc = "";
+                    return abc;
                 }
                 else
                 {
